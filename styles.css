@@ -13,7 +13,7 @@ body {
 
 /* Hero Section */
 header {
-    background-image: url('path/to/spa-image.jpg'); /* Use a serene spa image */
+    background-image: url(images/bg.jpg); /* Use a serene spa image */
     background-size: cover;
     color: white;
     text-align: center;
