@@ -1,7 +1,7 @@
 <?php 
 
     include('setup.php'); 
-
+    
 ?>
 
 <!DOCTYPE html>
@@ -10,84 +10,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home - Booking System</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        header {
-           
-            background-size: cover;
-            color: white;
-            text-align: center;
-            padding: 100px 20px;
-        }
-        header h1 {
-            font-size: 3em;
-            margin: 0;
-        }
-        header p {
-            font-size: 1.5em;
-            margin: 20px 0;
-        }
-        .cta-button {
-            background-color: #006F89;
-            color: white;
-            padding: 15px 30px;
-            text-decoration: none;
-            font-size: 1.2em;
-            margin-top: 20px;
-            display: inline-block;
-            border-radius: 5px;
-        }
-        #services, #testimonials {
-            padding: 50px 20px;
-        }
-        .service-card, .review-card {
-            border: 1px solid #ddd;
-            padding: 20px;
-            margin: 10px;
-            border-radius: 10px;
-            text-align: center;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        }
-        .service-card img, .review-card img {
-            width: 100%;
-            max-width: 200px;
-            height: auto;
-            border-radius: 10px;
-        }
-        .service-card h3, .review-card h3 {
-            font-size: 1.5em;
-            margin-top: 10px;
-        }
-        .review-slider {
-            display: flex;
-            overflow-x: scroll;
-            gap: 20px;
-        }
-        .service-cards, .testimonial-cards {
-            display: flex;
-            gap: 20px;
-            overflow-x: scroll;
-        }
-        .cta-section {
-            background-color: #f1f1f1;
-            text-align: center;
-            padding: 40px;
-        }
-        .cta-section h2 {
-            font-size: 2em;
-        }
-        footer {
-            background-color: #006F89;
-            color: white;
-            padding: 20px;
-            text-align: center;
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css"> <!-- Linking external CSS file -->
 </head>
 <body>
     <!-- Hero Section -->

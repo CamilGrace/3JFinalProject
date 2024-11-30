@@ -1,0 +1,157 @@
+/* Resetting default margin and padding for all elements */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Hero Section */
+header {
+    background-image: url('path/to/spa-image.jpg'); /* Use a serene spa image */
+    background-size: cover;
+    color: white;
+    text-align: center;
+    padding: 100px 20px;
+}
+
+header h1 {
+    font-size: 3em;
+    margin: 0;
+}
+
+header p {
+    font-size: 1.5em;
+    margin: 20px 0;
+}
+
+.cta-button {
+    background-color: #006F89;
+    color: white;
+    padding: 15px 30px;
+    text-decoration: none;
+    font-size: 1.2em;
+    margin-top: 20px;
+    display: inline-block;
+    border-radius: 5px;
+}
+
+.cta-button:hover {
+    background-color: #005f70;
+}
+
+/* Services Section */
+#services {
+    padding: 50px 20px;
+}
+
+#services h2 {
+    font-size: 2.5em;
+    margin-bottom: 30px;
+}
+
+.service-cards {
+    display: flex;
+    gap: 20px;
+    overflow-x: scroll;
+}
+
+.service-card {
+    border: 1px solid #ddd;
+    padding: 20px;
+    margin: 10px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    flex-shrink: 0;
+    width: 250px;
+}
+
+.service-card img {
+    width: 100%;
+    max-width: 200px;
+    height: auto;
+    border-radius: 10px;
+}
+
+.service-card h3 {
+    font-size: 1.5em;
+    margin-top: 10px;
+}
+
+/* Testimonials Section */
+#testimonials {
+    padding: 50px 20px;
+}
+
+#testimonials h2 {
+    font-size: 2.5em;
+    margin-bottom: 30px;
+}
+
+.review-slider {
+    display: flex;
+    overflow-x: scroll;
+    gap: 20px;
+}
+
+.review-card {
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    flex-shrink: 0;
+    width: 250px;
+}
+
+.review-card img {
+    width: 100%;
+    max-width: 100px;
+    height: auto;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.review-card h3 {
+    font-size: 1.2em;
+    margin-top: 10px;
+}
+
+.review-card p {
+    font-size: 1em;
+    color: #555;
+}
+
+/* Call to Action Section */
+.cta-section {
+    background-color: #f1f1f1;
+    text-align: center;
+    padding: 40px;
+}
+
+.cta-section h2 {
+    font-size: 2em;
+}
+
+.cta-section p {
+    font-size: 1.2em;
+    margin: 20px 0;
+}
+
+/* Footer Section */
+footer {
+    background-color: #006F89;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+footer p {
+    font-size: 1em;
+}
