@@ -47,51 +47,69 @@ header p {
 }
 
 /* Services Section */
-.services {
-    padding: 50px 20px;
-    background-image: url(https://thumb.photo-ac.com/e6/e6651ffb5056554c480ddf820fa01cb4_t.jpeg);
-    background-size: cover;
-    background-repeat: no-repeat;
+#services {
+    background-color: #f9f9f9; /* Light background for better readability */
+    padding: 50px 20px; /* Add padding for spacing */
+    text-align: center;
+}
+
+#services h2 {
+    font-size: 2.5em;
+    margin-bottom: 30px;
+    color: #333;
 }
 
 .grid-container {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive columns */
     gap: 20px;
-    padding: 20px;
+    margin: 0 auto;
+    max-width: 1200px; /* Restrict width for large screens */
 }
 
 .service-card {
     border: 1px solid #ddd;
-    padding: 20px;
-    margin: 10px;
     border-radius: 10px;
-    text-align: center;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    background-color: #fff;
-    transition: transform 0.3s ease;
+    overflow: hidden; /* Ensure child elements stay within the card */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background-color: white;
+    text-align: left;
 }
 
 .service-card:hover {
-    transform: scale(1.05);
+    transform: translateY(-5px); /* Slight lift on hover */
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
 }
 
 .service-card img {
-    width: 100%;
-    max-width: 200px;
-    height: auto;
-    border-radius: 10px;
+    width: 100%; /* Ensure the image spans the card width */
+    height: auto; /* Maintain aspect ratio */
 }
 
 .service-card h3 {
     font-size: 1.5em;
-    margin-top: 10px;
+    margin: 15px 10px;
+    color: #006F89;
 }
 
 .service-card p {
-    font-size: 1.2em;
-    margin: 10px 0;
+    margin: 10px 10px;
+    font-size: 1em;
+    color: #555;
 }
+
+.service-card p strong {
+    color: #333;
+}
+
+.service-card .cta-button {
+    display: block;
+    margin: 15px auto 10px;
+    text-align: center;
+    width: calc(100% - 20px); /* Align with card padding */
+}
+
 
 /* Feedback Section */
 .feedback-form {
@@ -169,4 +187,11 @@ footer {
 
 footer p {
     font-size: 1em;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .grid-container {
+        grid-template-columns: 1fr; /* Single column layout on smaller screens */
+    }
 }

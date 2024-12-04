@@ -29,13 +29,14 @@
 
         <div class="grid-container">
             <?php
-                $sql = "SELECT service_id, name, description, price FROM Services LIMIT 4";
+                // Fetch services with images
+                $sql = "SELECT service_id, name, description, price, image_url FROM Services LIMIT 4";
                 $result = $conn->query($sql);
 
                 if ($result->num_rows > 0) {
                     while ($service = $result->fetch_assoc()) {
                         echo "<div class='service-card'>
-                            <img src='{$service['image_url']}' alt='{$service['name']}'>
+                            <img src='{$service['image_url']}' alt='{$service['name']}' class='service-img'>
                             <h3>{$service['name']}</h3>
                             <p>{$service['description']}</p>
                             <p><strong>Price:</strong> PHP {$service['price']} - PHP " . ($service['price'] + 500) . "</p>
@@ -46,8 +47,7 @@
                     echo "<p>No services available</p>";
                 }
             ?>
-</div>
-
+        </div>
     </section>
 
     <!-- Testimonials Section -->
