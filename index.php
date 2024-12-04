@@ -29,22 +29,25 @@
 
         <div class="grid-container">
             <?php
-                // Check if there are services in the database
-                if (mysqli_num_rows($result) > 0) {
-                    // Output each service in a card
-                    while ($service = mysqli_fetch_assoc($result)) {
-                        echo "<div class='card'>
-                                <h3>{$service['name']} ({$service['duration']} minutes)</h3>
-                                <p><strong>Price:</strong> PHP {$service['price']} - {$service['price'] + 500}</p>
-                                <p><strong>Description:</strong> {$service['description']}</p>
-                                <a href='booking.php' class='cta-button'>Book Now</a>
-                              </div>";
+                $sql = "SELECT service_id, name, description, price FROM Services LIMIT 4";
+                $result = $conn->query($sql);
+
+                if ($result->num_rows > 0) {
+                    while ($service = $result->fetch_assoc()) {
+                        echo "<div class='service-card'>
+                            <img src='{$service['image_url']}' alt='{$service['name']}'>
+                            <h3>{$service['name']}</h3>
+                            <p>{$service['description']}</p>
+                            <p><strong>Price:</strong> PHP {$service['price']} - PHP " . ($service['price'] + 500) . "</p>
+                            <a href='booking.php?service_id={$service['service_id']}' class='cta-button'>Book Now</a>
+                        </div>";
                     }
                 } else {
-                    echo "<p>No services available at the moment.</p>";
+                    echo "<p>No services available</p>";
                 }
             ?>
-        </div>
+</div>
+
     </section>
 
     <!-- Testimonials Section -->
