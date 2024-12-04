@@ -29,8 +29,8 @@
 
         <div class="grid-container">
             <?php
-                // Fetch services with images
-                $sql = "SELECT service_id, name, description, price, image_url FROM Services LIMIT 4";
+                // Fetch all services from the database
+                $sql = "SELECT service_id, name, description, price, image_url FROM Services";
                 $result = $conn->query($sql);
 
                 if ($result->num_rows > 0) {
@@ -49,6 +49,7 @@
             ?>
         </div>
     </section>
+
 
     <!-- Testimonials Section -->
     <div class="feedback-form">
