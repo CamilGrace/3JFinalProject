@@ -4,6 +4,10 @@
     // Fetch services from the database
     $sql = "SELECT * FROM Services";
     $result = mysqli_query($conn, $sql);
+
+    // Fetch reviews from the database
+    $review_sql = "SELECT r.rating, r.comment, u.full_name, u.email FROM Reviews r JOIN Users u ON r.user_id = u.user_id";
+    $reviews_result = mysqli_query($conn, $review_sql);
 ?>
 
 <!DOCTYPE html>
@@ -13,6 +17,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home - Booking System</title>
     <link rel="stylesheet" href="styles.css"> <!-- Linking external CSS file -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"> <!-- Swiper CSS -->
 </head>
 <body>
     <!-- Hero Section -->
@@ -50,39 +55,39 @@
         </div>
     </section>
 
-
     <!-- Testimonials Section -->
-    <div class="feedback-form">
+    <section id="testimonials">
         <h2>Customer Feedback</h2>
-        <form>
-            <div class="form-group">
-                <label for="name">Full Name</label>
-                <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+        
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <?php
+                    if ($reviews_result->num_rows > 0) {
+                        while ($review = $reviews_result->fetch_assoc()) {
+                            echo "
+                            <div class='swiper-slide'>
+                                <div class='review-card'>
+                                    <div class='review-img'>
+                                        <img src='https://www.w3schools.com/w3images/avatar2.png' alt='Customer'>
+                                    </div>
+                                    <h3>{$review['full_name']}</h3>
+                                    <div class='rating'>";
+                                        for ($i = 0; $i < $review['rating']; $i++) {
+                                            echo "<span>⭐</span>";
+                                        }
+                                        echo "
+                                    </div>
+                                    <p class='comment'>\"{$review['comment']}\"</p>
+                                </div>
+                            </div>";
+                        }
+                    } else {
+                        echo "<p>No reviews available</p>";
+                    }
+                ?>
             </div>
-            <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email" placeholder="Enter your email" required>
-            </div>
-            <div class="form-group">
-                <label for="rating">Rating</label>
-                <select id="rating" name="rating" required>
-                    <option value="" disabled selected>Choose a rating</option>
-                    <option value="1">1 - Very Unsatisfied</option>
-                    <option value="2">2 - Unsatisfied</option>
-                    <option value="3">3 - Neutral</option>
-                    <option value="4">4 - Satisfied</option>
-                    <option value="5">5 - Very Satisfied</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="comments">Comments</label>
-                <textarea id="comments" name="comments" placeholder="Share your feedback..." required></textarea>
-            </div>
-            <div class="form-group">
-                <button type="submit">Submit Feedback</button>
-            </div>
-        </form>
-    </div>
+        </div>
+    </section>
 
     <!-- Call to Action Section -->
     <section class="cta-section">
@@ -94,5 +99,23 @@
     <footer>
         <p>&copy; 2024 Booking System. All rights reserved.</p>
     </footer>
+
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script> <!-- Swiper JS -->
+    <script>
+        var swiper = new Swiper('.swiper-container', {
+            loop: true,
+            autoplay: {
+                delay: 5000,
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+        });
+    </script>
 </body>
 </html>
