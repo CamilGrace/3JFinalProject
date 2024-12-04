@@ -25,7 +25,7 @@
         <h1>Welcome to Our Booking System</h1>
         <h3><p> "Nurture Your Soul, Renew Your Body" </p></h3>
         <a href="booking.php" class="cta-button">Book Now</a>
-        <a href="#services" class="cta-button">View Services</a>
+        <a href="services.php" class="cta-button">View Services</a>
     </header>
 
     <!-- Services Section -->
