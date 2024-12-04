@@ -14,6 +14,7 @@
     <div class="container">
         <h1>All Services</h1>
 
+        <!-- Filters Section -->
         <div class="filters">
             <select id="service_type" name="service_type">
                 <option value="">Service Type</option>
@@ -35,6 +36,34 @@
             </select>
         </div>
 
+        <!-- Popular Services Section -->
+        <section id="services">
+            <h2>Popular Services</h2>
+
+            <div class="grid-container">
+                <?php
+                    // Fetch all services from the database
+                    $sql = "SELECT service_id, name, description, price, image_url FROM Services";
+                    $result = $conn->query($sql);
+
+                    if ($result->num_rows > 0) {
+                        while ($service = $result->fetch_assoc()) {
+                            echo "<div class='service-card'>
+                                <img src='{$service['image_url']}' alt='{$service['name']}' class='service-img'>
+                                <h3>{$service['name']}</h3>
+                                <p>{$service['description']}</p>
+                                <p><strong>Price:</strong> PHP {$service['price']} - PHP " . ($service['price'] + 500) . "</p>
+                                <a href='booking.php?service_id={$service['service_id']}' class='cta-button'>Book Now</a>
+                            </div>";
+                        }
+                    } else {
+                        echo "<p>No services available</p>";
+                    }
+                ?>
+            </div>
+        </section>
+
+        <!-- Service List Section (Unchanged) -->
         <div class="service-list">
             <?php
             // Apply sorting or filtering if needed
