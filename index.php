@@ -1,7 +1,9 @@
 <?php 
-
     include('setup.php'); 
-    
+
+    // Fetch services from the database
+    $sql = "SELECT * FROM Services";
+    $result = mysqli_query($conn, $sql);
 ?>
 
 <!DOCTYPE html>
@@ -19,34 +21,33 @@
         <h3><p> "Nurture Your Soul, Renew Your Body" </p></h3>
         <a href="booking.php" class="cta-button">Book Now</a>
         <a href="#services" class="cta-button">View Services</a>
-        
     </header>
 
     <!-- Services Section -->
+    <section id="services">
+        <h2>Popular Services</h2>
 
-  <div class= "services">  
-  <section id="services">
-  <h2>Popular Services</h2>
-
-<body>
-    <div class="grid-container">
-
-        <div class="box">Swedish Massage (30 minutes): PHP 500 - 1,000 - A gentle massage to relax muscles and relieve stress. <br></br> <a href="booking.php" class="cta-button">Book Now</a></div> 
-        <div class="box">Deep Tissue Massage (60 minutes): PHP 1,000 - 1,500 - Targets deeper muscle layers to alleviate chronic pain and tension.<br></br> <a href="booking.php" class="cta-button">Book Now</a></div>
-        <div class="box">Basic Facial (60 minutes): PHP 1,000 - 1,500 - A cleansing, exfoliating, and moisturizing facial. <br></br><a href="booking.php" class="cta-button">Book Now</a></div>
-        <div class="box">Anti-Aging Facial (90 minutes): PHP 2,000 - 3,000 - A facial that targets signs of aging, such as wrinkles and fine lines.<br></br> <a href="booking.php" class="cta-button">Book Now</a></div>
-        <div class="box">Salt Scrub (60 minutes): PHP 1,500 - 2,000 - Exfoliates the skin to remove dead skin cells and impurities. <br></br><a href="booking.php" class="cta-button">Book Now</a></div>
-        <div class="box">Detoxifying Wrap (60 minutes): PHP 1,500 - 2,000 - A detoxifying treatment that helps to remove toxins from the body.<br></br> <a href="booking.php" class="cta-button">Book Now</a></div>
-
-    </div>
-</body>
-</html>
-
-</section>
+        <div class="grid-container">
+            <?php
+                // Check if there are services in the database
+                if (mysqli_num_rows($result) > 0) {
+                    // Output each service in a card
+                    while ($service = mysqli_fetch_assoc($result)) {
+                        echo "<div class='card'>
+                                <h3>{$service['name']} ({$service['duration']} minutes)</h3>
+                                <p><strong>Price:</strong> PHP {$service['price']} - {$service['price'] + 500}</p>
+                                <p><strong>Description:</strong> {$service['description']}</p>
+                                <a href='booking.php' class='cta-button'>Book Now</a>
+                              </div>";
+                    }
+                } else {
+                    echo "<p>No services available at the moment.</p>";
+                }
+            ?>
+        </div>
+    </section>
 
     <!-- Testimonials Section -->
-</head>
-<body>
     <div class="feedback-form">
         <h2>Customer Feedback</h2>
         <form>

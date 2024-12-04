@@ -14,7 +14,7 @@ body {
 /* Hero Section */
 header {
     background-image: url(https://image-tc.galaxy.tf/wijpeg-7un6x2p12vc4ll0lae9jchyew/white-orchid-spa-hero.jpg?width=1920); /* Use a serene spa image */
-    background-size: cover;  
+    background-size: cover;
     color: black;
     text-align: center;
     padding: 100px 20px;
@@ -47,56 +47,18 @@ header p {
 }
 
 /* Services Section */
-/*
-#services {
-    padding: 50px 20px;
-    background-image: url(https://thumb.photo-ac.com/e6/e6651ffb5056554c480ddf820fa01cb4_t.jpeg);
-    background-size: cover;
-    background-repeat: no-repeat; 
-}
-*/
-
 .services {
     padding: 50px 20px;
     background-image: url(https://thumb.photo-ac.com/e6/e6651ffb5056554c480ddf820fa01cb4_t.jpeg);
     background-size: cover;
-    background-repeat: no-repeat; 
+    background-repeat: no-repeat;
 }
 
-.body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
 .grid-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 10px; 
-    padding: 20px;
-}
-.box {
-    padding: 15px;
-    background-color: #f9f9f9;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    text-align: center;
-}
-.services img {
-    max-width: 100%; 
-    height: auto; 
-    background-position: center;
-}
-
-#services h2 {
-    font-size: 2.5em;
-    margin-bottom: 30px;
-}
-
-.service-cards {
-    display: flex;
     gap: 20px;
-    overflow-x: scroll;
+    padding: 20px;
 }
 
 .service-card {
@@ -106,8 +68,12 @@ header p {
     border-radius: 10px;
     text-align: center;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    flex-shrink: 0;
-    width: 250px;
+    background-color: #fff;
+    transition: transform 0.3s ease;
+}
+
+.service-card:hover {
+    transform: scale(1.05);
 }
 
 .service-card img {
@@ -120,39 +86,14 @@ header p {
 .service-card h3 {
     font-size: 1.5em;
     margin-top: 10px;
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f7f7f7;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
 }
 
-/* services section */
-/* <div class="service-cards">
-    <?php
-    $sql = "SELECT service_id, service_name, description, price, image_url FROM services LIMIT 4";
-    $result = $conn->query($sql);
+.service-card p {
+    font-size: 1.2em;
+    margin: 10px 0;
+}
 
-    if ($result->num_rows > 0) {
-      while ($row = $result->fetch_assoc()) {
-        echo "<div class='service-card'>
-          <img src='{$row['image_url']}' alt='{$row['service_name']}'>
-          <h3>{$row['service_name']}</h3>
-          <p>{$row['description']}</p>
-          <p>Price: {$row['price']}</p>
-          <a href='booking.php?service_id={$row['service_id']}' class='cta-button'>Book Now</a>
-        </div>";
-      }
-    } else {
-      echo "<p>No services available</p>";
-    }
-    ?>
-  </div>
-  */
-  
+/* Feedback Section */
 .feedback-form {
     width: 100%;
     max-width: 500px;
@@ -200,49 +141,6 @@ header p {
 }
 .form-group button:hover {
     background-color: #45a049;
-}
-/* Testimonials Section */
-#testimonials {
-    padding: 50px 20px;
-}
-
-#testimonials h2 {
-    font-size: 2.5em;
-    margin-bottom: 30px;
-}
-
-.review-slider {
-    display: flex;
-    overflow-x: scroll;
-    gap: 20px;
-}
-
-.review-card {
-    border: 1px solid #ddd;
-    padding: 20px;
-    border-radius: 10px;
-    text-align: center;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    flex-shrink: 0;
-    width: 250px;
-}
-
-.review-card img {
-    width: 100%;
-    max-width: 100px;
-    height: auto;
-    border-radius: 50%;
-    margin-bottom: 10px;
-}
-
-.review-card h3 {
-    font-size: 1.2em;
-    margin-top: 10px;
-}
-
-.review-card p {
-    font-size: 1em;
-    color: #555;
 }
 
 /* Call to Action Section */
