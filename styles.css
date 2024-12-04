@@ -47,69 +47,63 @@ header p {
 }
 
 /* Services Section */
-#services {
-    background-color: #f9f9f9; /* Light background for better readability */
-    padding: 50px 20px; /* Add padding for spacing */
-    text-align: center;
-}
-
-#services h2 {
-    font-size: 2.5em;
-    margin-bottom: 30px;
-    color: #333;
-}
-
 .grid-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive columns */
-    gap: 20px;
-    margin: 0 auto;
-    max-width: 1200px; /* Restrict width for large screens */
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); 
+    gap: 20px; 
+    margin: 0 auto; 
+    max-width: 1200px; 
 }
 
 .service-card {
+    background-color: #fff;
     border: 1px solid #ddd;
     border-radius: 10px;
-    overflow: hidden; /* Ensure child elements stay within the card */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+    text-align: center;
+    overflow: hidden;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    background-color: white;
-    text-align: left;
 }
 
 .service-card:hover {
-    transform: translateY(-5px); /* Slight lift on hover */
-    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
 }
 
 .service-card img {
-    width: 100%; /* Ensure the image spans the card width */
-    height: auto; /* Maintain aspect ratio */
+    width: 100%; 
+    height: auto;
+    max-height: 200px; 
+    object-fit: cover; 
+    border-radius: 10px 10px 0 0; 
 }
 
 .service-card h3 {
     font-size: 1.5em;
-    margin: 15px 10px;
+    margin: 10px 0;
     color: #006F89;
 }
 
 .service-card p {
-    margin: 10px 10px;
     font-size: 1em;
+    margin: 5px 10px;
     color: #555;
 }
 
-.service-card p strong {
-    color: #333;
-}
-
 .service-card .cta-button {
-    display: block;
-    margin: 15px auto 10px;
-    text-align: center;
-    width: calc(100% - 20px); /* Align with card padding */
+    margin: 15px 0;
+    display: inline-block;
+    padding: 10px 20px;
+    color: #fff;
+    background-color: #006F89;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
 }
 
+.service-card .cta-button:hover {
+    background-color: #005f70;
+}
 
 /* Feedback Section */
 .feedback-form {
