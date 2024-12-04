@@ -4,14 +4,6 @@
     // Fetch services from the database
     $sql = "SELECT * FROM Services";
     $result = mysqli_query($conn, $sql);
-
-    // Fetch reviews from the database
-    $reviews_sql = "SELECT R.rating, R.comment, U.name, U.profile_image
-                    FROM Reviews R
-                    JOIN Users U ON R.user_id = U.user_id
-                    ORDER BY R.created_at DESC
-                    LIMIT 10"; // Fetch the latest 10 reviews
-    $reviews_result = mysqli_query($conn, $reviews_sql);
 ?>
 
 <!DOCTYPE html>
@@ -60,33 +52,37 @@
 
 
     <!-- Testimonials Section -->
-    <section id="testimonials">
-        <h2>What Our Customers Say</h2>
-        <div class="swiper-container">
-            <div class="swiper-wrapper">
-                <?php
-                if (mysqli_num_rows($reviews_result) > 0) {
-                    while ($review = mysqli_fetch_assoc($reviews_result)) {
-                        echo "<div class='swiper-slide'>
-                                <div class='review-card'>
-                                    <img src='{$review['profile_image']}' alt='{$review['name']}' class='review-img'>
-                                    <h3>{$review['name']}</h3>
-                                    <p class='rating'>" . str_repeat("⭐", $review['rating']) . "</p>
-                                    <p class='comment'>\"{$review['comment']}\"</p>
-                                </div>
-                              </div>";
-                    }
-                } else {
-                    echo "<div class='swiper-slide'>
-                            <p>No reviews available yet.</p>
-                          </div>";
-                }
-                ?>
+    <div class="feedback-form">
+        <h2>Customer Feedback</h2>
+        <form>
+            <div class="form-group">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" name="name" placeholder="Enter your full name" required>
             </div>
-            <!-- Add Pagination -->
-            <div class="swiper-pagination"></div>
-        </div>
-    </section>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required>
+            </div>
+            <div class="form-group">
+                <label for="rating">Rating</label>
+                <select id="rating" name="rating" required>
+                    <option value="" disabled selected>Choose a rating</option>
+                    <option value="1">1 - Very Unsatisfied</option>
+                    <option value="2">2 - Unsatisfied</option>
+                    <option value="3">3 - Neutral</option>
+                    <option value="4">4 - Satisfied</option>
+                    <option value="5">5 - Very Satisfied</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="comments">Comments</label>
+                <textarea id="comments" name="comments" placeholder="Share your feedback..." required></textarea>
+            </div>
+            <div class="form-group">
+                <button type="submit">Submit Feedback</button>
+            </div>
+        </form>
+    </div>
 
     <!-- Call to Action Section -->
     <section class="cta-section">
@@ -98,22 +94,5 @@
     <footer>
         <p>&copy; 2024 Booking System. All rights reserved.</p>
     </footer>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            new Swiper('.swiper-container', {
-                loop: true,
-                autoplay: {
-                    delay: 5000,
-                    disableOnInteraction: false,
-                },
-                pagination: {
-                    el: '.swiper-pagination',
-                    clickable: true,
-                },
-            });
-        });
-    </script>
-    
 </body>
 </html>
