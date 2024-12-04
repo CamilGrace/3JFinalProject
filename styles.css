@@ -105,6 +105,24 @@ header p {
     background-color: #005f70;
 }
 
+.view-services-btn {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.view-services-btn .cta-button {
+    padding: 10px 20px;
+    background-color: #006F89;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.view-services-btn .cta-button:hover {
+    background-color: #004F6F;
+}
+
 /* Testimonials Section */
 #testimonials {
     padding: 50px 25px;

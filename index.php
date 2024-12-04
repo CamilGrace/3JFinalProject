@@ -1,8 +1,8 @@
 <?php 
     include('setup.php'); 
 
-    // Fetch services from the database
-    $sql = "SELECT * FROM Services";
+    // Fetch the top 3 services from the database (limit to 3)
+    $sql = "SELECT service_id, name, description, price, image_url FROM Services LIMIT 3";
     $result = mysqli_query($conn, $sql);
 
     // Fetch reviews from the database
@@ -25,7 +25,7 @@
         <h1>Welcome to Our Booking System</h1>
         <h3><p> "Nurture Your Soul, Renew Your Body" </p></h3>
         <a href="booking.php" class="cta-button">Book Now</a>
-        <a href="services.php" class="cta-button">View Services</a>
+        <a href="#services" class="cta-button">View Services</a>
     </header>
 
     <!-- Services Section -->
@@ -34,8 +34,8 @@
 
         <div class="grid-container">
             <?php
-                // Fetch all services from the database
-                $sql = "SELECT service_id, name, description, price, image_url FROM Services";
+                // Limit the services to 3
+                $sql = "SELECT service_id, name, description, price, image_url FROM Services LIMIT 3";
                 $result = $conn->query($sql);
 
                 if ($result->num_rows > 0) {
@@ -52,6 +52,11 @@
                     echo "<p>No services available</p>";
                 }
             ?>
+        </div>
+
+        <!-- View Services Button -->
+        <div class="view-services-btn">
+            <a href="services.php" class="cta-button">View All Services</a>
         </div>
     </section>
 
