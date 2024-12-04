@@ -3,6 +3,7 @@ CREATE DATABASE IF NOT EXISTS booking_system;
 
 USE booking_system;
 
+---------------------------------------------------------
 CREATE TABLE IF NOT EXISTS Users (
     user_id INT AUTO_INCREMENT PRIMARY KEY,
     full_name VARCHAR(100) NOT NULL,
@@ -14,6 +15,15 @@ CREATE TABLE IF NOT EXISTS Users (
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
+INSERT INTO Users (full_name, email, phone_number, password, role)
+VALUES
+('John Doe', 'john.doe@example.com', '09171234567', 'password123', 'customer'),
+('Jane Smith', 'jane.smith@example.com', '09182234568', 'securepass', 'customer'),
+('Mark Johnson', 'mark.johnson@example.com', '09173334569', 'mypassword', 'therapist'),
+('Lucy Brown', 'lucy.brown@example.com', '09174434560', 'passw0rd', 'therapist'),
+('Admin User', 'admin@example.com', NULL, 'adminpass', 'admin');
+
+---------------------------------------------------------
 CREATE TABLE IF NOT EXISTS Services (
     service_id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(100) NOT NULL,
@@ -24,6 +34,25 @@ CREATE TABLE IF NOT EXISTS Services (
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
+INSERT INTO Services (name, description, price, duration) 
+VALUES
+    ('Swedish Massage', 'A gentle massage to relax muscles and relieve stress.', 500.00, 30),
+    ('Deep Tissue Massage', 'Targets deeper muscle layers to alleviate chronic pain and tension.', 1000.00, 60),
+    ('Basic Facial', 'A cleansing, exfoliating, and moisturizing facial.', 1000.00, 60),
+    ('Anti-Aging Facial', 'A facial that targets signs of aging, such as wrinkles and fine lines.', 2000.00, 90),
+    ('Salt Scrub', 'Exfoliates the skin to remove dead skin cells and impurities.', 1500.00, 60),
+    ('Detoxifying Wrap', 'A detoxifying treatment that helps to remove toxins from the body.', 1500.00, 60);
+
+ALTER TABLE Services ADD image_url VARCHAR(255) AFTER price;
+
+UPDATE Services SET image_url = 'images/swedish_massage.jpg' WHERE service_id = 1;
+UPDATE Services SET image_url = 'images/deep_tissue_massage.jpg' WHERE service_id = 2;
+UPDATE Services SET image_url = 'images/basic_facial.jpg' WHERE service_id = 3;
+UPDATE Services SET image_url = 'images/anti_aging_facial.jpg' WHERE service_id = 4;
+UPDATE Services SET image_url = 'images/salt_scrub.jpg' WHERE service_id = 5;
+UPDATE Services SET image_url = 'images/detoxifying_wrap.jpg' WHERE service_id = 6;
+
+---------------------------------------------------------
 CREATE TABLE IF NOT EXISTS Appointments (
     appointment_id INT AUTO_INCREMENT PRIMARY KEY,
     user_id INT NOT NULL,
@@ -40,6 +69,14 @@ CREATE TABLE IF NOT EXISTS Appointments (
     FOREIGN KEY (service_id) REFERENCES Services(service_id)
 );
 
+INSERT INTO Appointments (user_id, therapist_id, service_id, appointment_date, start_time, end_time, status)
+VALUES
+(1, 3, 1, '2024-12-10', '10:00:00', '11:00:00', 'completed'),
+(2, 4, 2, '2024-12-11', '14:00:00', '15:00:00', 'completed'),
+(1, 3, 3, '2024-12-12', '09:00:00', '10:00:00', 'confirmed'),
+(2, 4, 1, '2024-12-13', '16:00:00', '17:00:00', 'pending');
+
+---------------------------------------------------------
 CREATE TABLE IF NOT EXISTS Payments (
     payment_id INT AUTO_INCREMENT PRIMARY KEY,
     appointment_id INT NOT NULL,
@@ -51,6 +88,12 @@ CREATE TABLE IF NOT EXISTS Payments (
     FOREIGN KEY (appointment_id) REFERENCES Appointments(appointment_id)
 );
 
+INSERT INTO Payments (appointment_id, amount, payment_method, payment_status, transaction_id)
+VALUES
+(1, 500.00, 'cash', 'paid', 'TRX12345'),
+(2, 750.00, 'credit_card', 'paid', 'TRX12346');
+
+---------------------------------------------------------
 CREATE TABLE IF NOT EXISTS Availability (
     availability_id INT AUTO_INCREMENT PRIMARY KEY,
     therapist_id INT NOT NULL,
@@ -60,6 +103,14 @@ CREATE TABLE IF NOT EXISTS Availability (
     FOREIGN KEY (therapist_id) REFERENCES Users(user_id)
 );
 
+INSERT INTO Availability (therapist_id, date, start_time, end_time)
+VALUES
+(3, '2024-12-10', '09:00:00', '17:00:00'),
+(4, '2024-12-11', '13:00:00', '18:00:00'),
+(3, '2024-12-12', '09:00:00', '17:00:00'),
+(4, '2024-12-13', '13:00:00', '18:00:00');
+
+---------------------------------------------------------
 CREATE TABLE IF NOT EXISTS Reviews (
     review_id INT AUTO_INCREMENT PRIMARY KEY,
     appointment_id INT NOT NULL,
@@ -71,6 +122,13 @@ CREATE TABLE IF NOT EXISTS Reviews (
     FOREIGN KEY (user_id) REFERENCES Users(user_id)
 );
 
+INSERT INTO Reviews (appointment_id, user_id, rating, comment)
+VALUES
+(1, 1, 5, 'Absolutely fantastic service, highly recommend!'),
+(2, 2, 4, 'The therapist was very skilled and professional.'),
+(1, 1, 4, 'Great session, but the waiting time was a bit long.');
+
+---------------------------------------------------------
 CREATE TABLE IF NOT EXISTS Promotions (
     promo_id INT AUTO_INCREMENT PRIMARY KEY,
     promo_code VARCHAR(50) UNIQUE NOT NULL,
@@ -79,3 +137,8 @@ CREATE TABLE IF NOT EXISTS Promotions (
     start_date DATE NOT NULL,
     end_date DATE NOT NULL
 );
+
+INSERT INTO Promotions (promo_code, description, discount_percent, start_date, end_date)
+VALUES
+('NEWYEAR2024', 'New Year Promo! Get 20% off on all services.', 20.00, '2024-12-31', '2025-01-07'),
+('HOLIDAY15', '15% off for holiday season bookings.', 15.00, '2024-12-20', '2024-12-30');
