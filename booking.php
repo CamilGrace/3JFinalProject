@@ -47,16 +47,15 @@ $therapists_result = $conn->query($therapists_query);
         <button type="button" class="booking-btn" onclick="goToStep(2)">Next</button>
     </div>
 
-    <!-- Step 2: Choose Date and Time -->
     <div class="booking-step" id="step2">
-        <h2>Choose Date and Time</h2>
-        <input type="date" name="appointment_date" required>
-        <input type="time" name="start_time" required>
-        <input type="time" name="end_time" required>
-        
-        <button type="button" class="booking-btn" onclick="goToStep(1)">Back</button>
-        <button type="submit" class="booking-btn">Confirm Booking</button>
-    </div>
+    <h2>Choose Date and Time</h2>
+    <input type="date" name="appointment_date" required>
+    <input type="time" name="start_time" id="start_time" required>
+    <input type="time" name="end_time" id="end_time" readonly>
+    
+    <button type="button" class="booking-btn" onclick="goToStep(1)">Back</button>
+    <button type="submit" class="booking-btn">Confirm Booking</button>
+</div>
 </form>
 
 <script>
@@ -64,6 +63,19 @@ $therapists_result = $conn->query($therapists_query);
         document.querySelector('.booking-step.active').classList.remove('active');
         document.getElementById('step' + step).classList.add('active');
     }
+
+    const startTimeInput = document.getElementById('start_time');
+    const endTimeInput = document.getElementById('end_time');
+
+    startTimeInput.addEventListener('input', () => {
+        const startTime = startTimeInput.value;
+        if (startTime) {
+            const [hours, minutes] = startTime.split(':').map(Number);
+            const endTime = new Date();
+            endTime.setHours(hours + 1, minutes); // Add 1 hour to the start time
+            endTimeInput.value = endTime.toISOString().substr(11, 5); // Format to HH:MM
+        }
+    });
 </script>
 
 </body>
