@@ -1,0 +1,67 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 0;
+}
+
+.dashboard {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+h1, h2 {
+    color: #333;
+}
+
+.appointments-section, .account-settings, .promotions-rewards {
+    margin-bottom: 20px;
+}
+
+.appointment-list {
+    display: grid;
+    gap: 15px;
+}
+
+.appointment-card {
+    background-color: #f1f1f1;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.appointment-card p {
+    margin: 5px 0;
+}
+
+button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.btn-cancel {
+    background-color: #e74c3c;
+    color: white;
+}
+
+.btn-reschedule {
+    background-color: #f39c12;
+    color: white;
+}
+
+.btn-review {
+    background-color: #3498db;
+    color: white;
+}
+
+.btn-edit-profile, .btn-change-password {
+    background-color: #2ecc71;
+    color: white;
+    margin: 5px 0;
+}

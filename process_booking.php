@@ -1,7 +1,7 @@
 <?php
 // Database connection
-include 'setup.php';
-session_start();
+    include 'setup.php';
+    session_start();
 
 // Assuming user is logged in and user_id is stored in session
 $user_id = $_SESSION['user_id']; 
