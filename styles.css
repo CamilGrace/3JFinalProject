@@ -215,6 +215,35 @@ footer p {
     font-size: 1em;
 }
 
+.top-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #006F89;
+    color: white;
+    padding: 10px 20px;
+}
+
+.top-nav .container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.login-button {
+    background-color: white;
+    color: #006F89;
+    padding: 8px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.login-button:hover {
+    background-color: #f1f1f1;
+    color: #004f5b;
+}
+
 /* Responsive Styles */
 @media (max-width: 768px) {
     .grid-container {

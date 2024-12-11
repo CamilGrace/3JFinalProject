@@ -20,6 +20,14 @@
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"> <!-- Swiper CSS -->
 </head>
 <body>
+    <!-- Top Navigation Bar -->
+    <nav class="top-nav">
+        <div class="container">
+            <h1>Booking System</h1>
+            <a href="user_dashboard.php" class="login-button">Login</a>
+        </div>
+    </nav>
+
     <!-- Hero Section -->
     <header>
         <h1>Welcome to Our Booking System</h1>
