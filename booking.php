@@ -56,7 +56,6 @@ $therapists_result = $conn->query($therapists_query);
     <button type="button" class="booking-btn" onclick="goToStep(1)">Back</button>
     <button type="submit" class="booking-btn">Confirm Booking</button>
 </div>
-</form>
 
 <script>
     function goToStep(step) {
@@ -70,26 +69,19 @@ $therapists_result = $conn->query($therapists_query);
     startTimeInput.addEventListener('input', () => {
         const startTime = startTimeInput.value;
         if (startTime) {
-            // Parse the start time
+            // Parse the start time in 24-hour format
             const [hours, minutes] = startTime.split(':').map(Number);
-            let endHours = hours + 1;
-            let period = 'AM';
 
-            // Adjust for 12-hour format and AM/PM
-            if (endHours >= 12) {
-                period = endHours >= 24 ? 'AM' : 'PM';
-                endHours = endHours > 12 ? endHours - 12 : endHours;
-            }
-            if (hours >= 12) {
-                period = hours >= 24 ? 'AM' : 'PM';
-            }
-
-            // Format end time as HH:MM AM/PM
-            const formattedEndTime = `${endHours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')} ${period}`;
+            // Calculate end time by adding 1 hour
+            let endHours = (hours + 1) % 24; // Handle overflow at midnight
+            const formattedEndTime = `${endHours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}`;
+            
+            // Set the end time value
             endTimeInput.value = formattedEndTime;
         }
     });
 </script>
+
 
 </body>
 </html>
