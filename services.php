@@ -8,7 +8,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>All Services</title>
-    <link rel="stylesheet" href="service_styles.css">
+    <link rel="stylesheet" href="servicestyles.css">
 </head>
 <body>
     <div class="container">
