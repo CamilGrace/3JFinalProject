@@ -30,15 +30,27 @@
 }
 
 /* Service Selection Styles */
+.service-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
 .service-card {
     display: flex;
     flex-direction: column;
     align-items: center;
     border: 1px solid #ddd;
     padding: 10px;
-    margin: 10px;
     border-radius: 8px;
     cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .service-card img {
@@ -50,11 +62,13 @@
 .service-card .service-name {
     font-weight: bold;
     margin-top: 10px;
+    text-align: center;
 }
 
 .service-card .service-price {
     color: #006F89;
     margin-top: 5px;
+    text-align: center;
 }
 
 /* Payment Step Styles */
