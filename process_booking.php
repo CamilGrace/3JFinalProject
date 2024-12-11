@@ -25,9 +25,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($result->num_rows == 0) {
         // Therapist not available at this time
         echo "Sorry, the therapist is not available at the selected time.";
+        echo '<br><br><button onclick="window.history.back()" style="background-color: #006F89; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer;">Back</button>';
         exit;
     }
-
     // Insert appointment
     $query = "INSERT INTO Appointments (user_id, therapist_id, service_id, appointment_date, start_time, end_time, status) 
               VALUES (?, ?, ?, ?, ?, ?, 'pending')";

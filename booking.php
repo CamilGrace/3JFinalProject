@@ -70,10 +70,23 @@ $therapists_result = $conn->query($therapists_query);
     startTimeInput.addEventListener('input', () => {
         const startTime = startTimeInput.value;
         if (startTime) {
+            // Parse the start time
             const [hours, minutes] = startTime.split(':').map(Number);
-            const endTime = new Date();
-            endTime.setHours(hours + 1, minutes); // Add 1 hour to the start time
-            endTimeInput.value = endTime.toISOString().substr(11, 5); // Format to HH:MM
+            let endHours = hours + 1;
+            let period = 'AM';
+
+            // Adjust for 12-hour format and AM/PM
+            if (endHours >= 12) {
+                period = endHours >= 24 ? 'AM' : 'PM';
+                endHours = endHours > 12 ? endHours - 12 : endHours;
+            }
+            if (hours >= 12) {
+                period = hours >= 24 ? 'AM' : 'PM';
+            }
+
+            // Format end time as HH:MM AM/PM
+            const formattedEndTime = `${endHours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')} ${period}`;
+            endTimeInput.value = formattedEndTime;
         }
     });
 </script>
