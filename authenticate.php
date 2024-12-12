@@ -25,8 +25,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $stmt->execute();
     $result = $stmt->get_result();
 
+    // Debugging: Check if user exists
     if ($result->num_rows === 1) {
         $user = $result->fetch_assoc();
+        
+        // Debugging: Check the retrieved data
+        // echo '<pre>';
+        // print_r($user);
+        // echo '</pre>';
 
         // Verify password
         if (password_verify($password, $user['password'])) {

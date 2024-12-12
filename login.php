@@ -6,7 +6,15 @@
     <title>Login</title>
 </head>
 <body>
-    <h1>Login Page Placeholder</h1>
+    <h1>Login Page</h1>
+    <!-- Display error message if session error exists -->
+    <?php
+    session_start();
+    if (isset($_SESSION['error'])) {
+        echo '<p style="color: red;">' . $_SESSION['error'] . '</p>';
+        unset($_SESSION['error']);
+    }
+    ?>
     <form action="authenticate.php" method="POST">
         <label for="email">Email:</label>
         <input type="email" name="email" id="email" required>
