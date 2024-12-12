@@ -24,7 +24,7 @@
     <nav class="top-nav">
         <div class="container">
             <h1>Booking System</h1>
-            <a href="userdashboard.php" class="login-button">Login</a>
+            <a href="login.php" class="login-button">Login</a>
         </div>
     </nav>
 
