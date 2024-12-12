@@ -21,13 +21,19 @@
 </head>
 <body>
     <!-- Top Navigation Bar -->
+    <?php 
+        session_start(); 
+    ?>
     <nav class="top-nav">
         <div class="container">
             <h1>Booking System</h1>
-            <a href="user_dashboard.php" class="login-button">Login</a>
+            <?php if (isset($_SESSION['user_id'])): ?>
+                <a href="user_dashboard.php" class="login-button">Dashboard</a>
+            <?php else: ?>
+                <a href="login.php" class="login-button">Login</a>
+            <?php endif; ?>
         </div>
     </nav>
-
     <!-- Hero Section -->
     <header>
         <h1>Welcome to Our Booking System</h1>
