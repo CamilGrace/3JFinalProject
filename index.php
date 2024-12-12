@@ -21,13 +21,19 @@
 </head>
 <body>
     <!-- Top Navigation Bar -->
+    <?php 
+        session_start(); 
+    ?>
     <nav class="top-nav">
         <div class="container">
             <h1>Booking System</h1>
-            <a href="userdashboard.php" class="login-button">Login</a>
+            <?php if (isset($_SESSION['user_id'])): ?>
+                <a href="user_dashboard.php" class="login-button">Dashboard</a>
+            <?php else: ?>
+                <a href="login.php" class="login-button">Login</a>
+            <?php endif; ?>
         </div>
     </nav>
-
     <!-- Hero Section -->
     <header>
         <h1>Welcome to Our Booking System</h1>
@@ -100,13 +106,13 @@
                 ?>
             </div>
         </div>
-    </section>
 
-    <!-- Call to Action Section -->
-    <section class="cta-section">
-        <h2>Start Your Journey Today</h2>
-        <p>Ready to book your first session? It's easy to get started!</p>
-        <a href="signup.php" class="cta-button">Create an Account</a>
+        <!-- Call to Action Section under Customer Feedback -->
+        <div class="cta-under-feedback">
+            <h3>Join Our Happy Customers</h3>
+            <p>Experience our top-rated services today!</p>
+            <a href="signup.php" class="cta-button">Create an Account</a>
+        </div>
     </section>
 
     <footer>

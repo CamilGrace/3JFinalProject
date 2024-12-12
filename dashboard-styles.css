@@ -1,0 +1,135 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+    color: #333;
+}
+
+h1, h2, h3 {
+    color: #333;
+}
+
+.container {
+    width: 90%;
+    margin: 0 auto;
+}
+
+/* Navigation Bar */
+.top-nav {
+    background-color: #0073e6;
+    color: #fff;
+    padding: 10px 0;
+}
+
+.top-nav .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.top-nav h1 {
+    margin: 0;
+}
+
+.logout-button {
+    color: #fff;
+    text-decoration: none;
+    background-color: #005bb5;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.logout-button:hover {
+    background-color: #004494;
+}
+
+/* Main Section */
+main {
+    padding: 20px 0;
+}
+
+dashboard {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.dashboard h2 {
+    margin-top: 0;
+}
+
+/* Appointments Section */
+.appointments ul {
+    list-style: none;
+    padding: 0;
+}
+
+.appointments li {
+    background-color: #f9f9f9;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.appointments li strong {
+    display: block;
+    font-size: 1.2em;
+}
+
+.appointments li a {
+    color: #0073e6;
+    text-decoration: none;
+    margin-right: 10px;
+}
+
+.appointments li a:hover {
+    text-decoration: underline;
+}
+
+/* Account Settings Section */
+.account-settings a {
+    display: block;
+    margin: 5px 0;
+    color: #0073e6;
+    text-decoration: none;
+}
+
+.account-settings a:hover {
+    text-decoration: underline;
+}
+
+/* Promotions Section */
+.promotions ul {
+    list-style: none;
+    padding: 0;
+}
+
+.promotions li {
+    background-color: #f9f9f9;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.promotions li strong {
+    font-size: 1.1em;
+    display: block;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 10px 0;
+    background-color: #0073e6;
+    color: #fff;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
