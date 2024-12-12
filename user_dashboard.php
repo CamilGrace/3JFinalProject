@@ -102,7 +102,7 @@ $promotions = $stmt->get_result();
             </section>
 
             <section class="promotions">
-                <h3>Promotions and Rewards</h3>
+                <h3>Promotions and Reward</h3>
                 <?php if ($promotions->num_rows > 0): ?>
                     <ul>
                         <?php while ($promo = $promotions->fetch_assoc()): ?>
